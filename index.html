@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>戳戳樂</title>
+    <link rel="stylesheet" href="style.css"> <!-- 引入CSS樣式 -->
+</head>
+<body style="display: flex;">
+    <div style="display: flex; flex-direction: column; align-items: flex-start;">
+    <div id="gameset">
+        <label for="col">列:</label>
+        <input type="number" id="col" value="5" min="3" max="15">
+        <label for="row">排:</label>
+        <input type="number" id="row" value="5" min="3" max="15">
+        <button id="getFilled">更新</button>
+    </div>
+    <div id="table-container"></div>
+    </div>
+    
+    <div id="game-board">
+        <!-- 生成25個格子 -->
+        <!-- 使用JavaScript動態生成格子內容 -->
+    </div>
+    <script src="script.js"></script> <!-- 引入JavaScript -->
+</body>
+</html>

@@ -1,0 +1,58 @@
+/* style.css */
+#game-board {
+    display: grid;
+    grid-template-columns: repeat(10, 80px); /* 5列，每列100px */
+    gap: 5px; /* 格子間距 */
+    width: max-content; /* 根據格子大小和間距計算 */
+    height: max-content; /* 根據格子大小和間距計算 */
+    margin-top : 0px;
+    margin-left : 1%;
+    background-size: cover; /* 使背景圖片覆蓋整個容器 */
+    position: relative; /* 為了之後可能的定位使用 */
+}
+#gameset{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1%;
+}
+
+#table-container{
+    margin-top: 5px;
+}
+
+#getFilled{
+    margin-left: 13px;
+}
+
+input[name="col1"] {
+    width: 30px;
+}
+.punched {
+    background-color: #ffcccc; /* 被戳破後的背景顏色 */
+    pointer-events: none; /* 禁止再次點擊 */
+}
+
+
+
+.cell {
+    width: 80px; /* 格子大小 */
+    height: 80px;
+    background-image: url('night_2.jpg'); /* 替換成你的圖片URL */
+    background-attachment: fixed;
+    word-break: break-word;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 5px; /* 添加內距以避免文字貼近邊緣 */
+    box-sizing: border-box; /* 確保寬高包含padding */
+    overflow: hidden; /* 隱藏超出部分 */
+    text-align: center; /* 文字居中 */
+    word-wrap: break-word; /* 允許在單詞內換行 */
+    font-size: 14px; /* 初始字體大小 */
+    text-shadow: 0 0 10px #fff, 0 0 10px #fff, 0 0 30px #ff00de, 0 0 40px #ff00de, 0 0 50px #ff00de, 0 0 60px #ff00de, 0 0 70px #ff00de;
+}
+
+.cell.small-text {
+    font-size: 12px; /* 較小的字體大小，適用於長文字 */
+}
