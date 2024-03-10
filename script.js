@@ -3,25 +3,24 @@
 let prizesList = [{name: '', quantity: 0},]
 let _name = '';
 let quantity = 0;
+let items = [];
 const board = document.getElementById('game-board');
 
 
 function generateTableWithInputs(rows) {
     var table = '<table border="1">';
-    
     for (var row = 0; row < rows; row++) {
         console.log()
         table += '<tr>';
         table += '<td><input name="col0" type="text"></td>';
-        table += '<td><input name="col1" type="number" min=0></td>';
+        table += '<td><input name="col1" type="number" min=0 value="0"></td>';
         table += '</tr>';
     }
     
     table += '</table>';
     document.getElementById('table-container').innerHTML = table;
 }
-
-generateTableWithInputs(20); // 請求生成一個4行2列的表格，每個單元格都有輸入框
+generateTableWithInputs(20);
 
 
 document.getElementById('getFilled').addEventListener('click', () => {
@@ -63,32 +62,61 @@ function updateBoard() {
     let cells = [];
     const punchedCells = new Set();
 
-    // 填充獎品到cells陣列
     prizesList.forEach(prize => {
         for (let i = 0; i < prize.quantity; i++) {
             cells.push(prize.name);
         }
     });
 
-    // 填充剩餘的格子為"銘謝惠顧"
     while (cells.length < totalCells) {
         cells.push('銘謝惠顧');
     }
 
-    // 打亂cells陣列
     cells.sort(() => Math.random() - 0.5);
 
-    // 生成格子
     for (let i = 0; i < totalCells; i++) {
         const cell = document.createElement('div');
         cell.classList.add('cell');
+        cell.innerText = `${i}`
         cell.onclick = () => {
             if (!punchedCells.has(i)) {
-                cell.textContent = cells[i]; // 戳破後顯示獎品名稱或"銘謝惠顧"
-                cell.classList.add('punched'); // 標記為已戳破
-                punchedCells.add(i); // 記錄索引
+                cell.textContent = cells[i];
+                cell.classList.add('punched');
+                punchedCells.add(i);
             }
         };
         board.appendChild(cell);
     }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const inputs = document.querySelectorAll('#table-container input');
+    inputs.forEach(input => {
+        input.addEventListener('input', (event) => {
+            const currentRow = event.target.closest('tr');
+            const rowIndex = Array.from(currentRow.parentNode.children).indexOf(currentRow);
+            if (!items[rowIndex]) {
+                items[rowIndex] = [];
+            }
+            const rowInputs = currentRow.querySelectorAll('input');
+            items[rowIndex] = Array.from(rowInputs).map(rowInput => {
+                return rowInput.name === 'col1' ? parseInt(rowInput.value, 10) : rowInput.value;
+            });
+            //console.log(items);
+            statistical()
+
+        });
+    });
+});
+
+function statistical() {
+    let total = items.reduce((accumulator, currentValue) => {
+        return accumulator + currentValue[1];
+    }, 0); // 初始化累加器為0
+    var messageElement = document.createElement('p');
+    messageElement.textContent = `獎品總數: ${total}`;
+    var messageContainer = document.getElementById('count');
+
+    messageContainer.innerHTML = '';
+    messageContainer.appendChild(messageElement);
 }
