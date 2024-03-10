@@ -42,7 +42,7 @@ input[name="col1"] {
     width: 80px; /* 格子大小 */
     height: 80px;
     background-color: #a4b9fd;
-    /*background-image: url('night_2.jpg'); /* 替換成你的圖片URL */
+    background-image: url('night_2.jpg'); /* 替換成你的圖片URL */
     background-attachment: fixed;
     word-break: break-word;
     display: flex;
