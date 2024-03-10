@@ -20,6 +20,12 @@
     margin-bottom: 1%;
 }
 
+#link{
+    display: flex;
+    margin-left: 10px;
+    align-items: center;
+}
+
 #table-container{
     margin-top: 5px;
 }
