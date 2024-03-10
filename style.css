@@ -1,7 +1,7 @@
 /* style.css */
 #game-board {
     display: grid;
-    grid-template-columns: repeat(10, 80px); /* 5列，每列100px */
+    grid-template-columns: repeat(10, 50px); /* 5列，每列100px */
     gap: 5px; /* 格子間距 */
     width: max-content; /* 根據格子大小和間距計算 */
     height: max-content; /* 根據格子大小和間距計算 */
@@ -28,7 +28,10 @@
     margin-left: 13px;
 }
 
-input[name="col1"] {
+input[name="col0"] {
+    width: 30px;
+}
+input[name="col2"] {
     width: 30px;
 }
 .punched {
@@ -39,8 +42,8 @@ input[name="col1"] {
 
 
 .cell {
-    width: 80px; /* 格子大小 */
-    height: 80px;
+    width: 50px; /* 格子大小 */
+    height: 50px;
     background-color: #a4b9fd;
     background-image: url('night_2.jpg'); /* 替換成你的圖片URL */
     background-attachment: fixed;

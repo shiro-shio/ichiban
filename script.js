@@ -9,11 +9,15 @@ const board = document.getElementById('game-board');
 
 function generateTableWithInputs(rows) {
     var table = '<table border="1">';
+    const AZ = ['A','B','C','D','E',
+                'F','G','H','I','J',
+                'K','L','M','N','O',
+                'P','Q','R','S','T']
     for (var row = 0; row < rows; row++) {
-        console.log()
         table += '<tr>';
-        table += '<td><input name="col0" type="text"></td>';
-        table += '<td><input name="col1" type="number" min=0 value="0"></td>';
+        table += '<td><input name="col0" type="text"'+`value="${AZ[row]}賞"`+'></td>';
+        table += '<td><input name="col1" type="text"></td>';
+        table += '<td><input name="col2" type="number" min=0 value="0"></td>';
         table += '</tr>';
     }
     
@@ -30,7 +34,7 @@ document.getElementById('getFilled').addEventListener('click', () => {
     filledInputs.forEach(input => {
         if (input.name === 'col0' && input.value.trim() !== '') {
             _name = input.value.trim();
-        } else if (input.name === 'col1' && input.value.trim() !== '') {
+        } else if (input.name === 'col2' && input.value.trim() !== '') {
             quantity = parseInt(input.value.trim(), 10);
         }
         if (_name && quantity > 0) {
@@ -57,7 +61,7 @@ function updateBoard() {
     let col = parseInt(document.getElementById('col').value);
     let row = parseInt(document.getElementById('row').value);
     board.innerHTML = ''; // 清空遊戲板
-    board.style.gridTemplateColumns = `repeat(${col}, 80px)`;
+    board.style.gridTemplateColumns = `repeat(${col}, 50px)`;
     const totalCells = col * row;
     let cells = [];
     const punchedCells = new Set();
@@ -100,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             const rowInputs = currentRow.querySelectorAll('input');
             items[rowIndex] = Array.from(rowInputs).map(rowInput => {
-                return rowInput.name === 'col1' ? parseInt(rowInput.value, 10) : rowInput.value;
+                return rowInput.name === 'col2' ? parseInt(rowInput.value, 10) : rowInput.value;
             });
             //console.log(items);
             statistical()
@@ -111,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function statistical() {
     let total = items.reduce((accumulator, currentValue) => {
-        return accumulator + currentValue[1];
+        return accumulator + currentValue[2];
     }, 0); // 初始化累加器為0
     var messageElement = document.createElement('p');
     messageElement.textContent = `獎品總數: ${total}`;
