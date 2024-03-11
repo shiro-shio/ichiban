@@ -136,6 +136,9 @@ input[name="col2"] {
     background-color: #a4b9fd;
     background-image: url('night_2.jpg'); /* 替換成你的圖片URL */
     background-attachment: fixed;
+    background-position-x: 290px;
+    background-position-y: 106px;
+    background-size: 54% 67%;
     word-break: break-word;
     display: flex;
     justify-content: center;

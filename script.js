@@ -48,6 +48,7 @@ document.getElementById('getFilled').addEventListener('click', () => {
         console.log('沒有填入資料的單元格');
     }
     updateBoard();
+    adjustBackgroundSize();
 });
 
 
@@ -124,3 +125,12 @@ function statistical() {
     messageContainer.innerHTML = '';
     messageContainer.appendChild(messageElement);
 }
+
+function adjustBackgroundSize() {
+    //const gameBoard = document.getElementById('game-board');
+    size_h = board.offsetHeight
+    size_w = board.offsetWidth
+    document.querySelectorAll('.cell').forEach(function(cell) {
+        cell.style.backgroundSize = `${size_w}px ${size_h}px`;
+    });
+  }
