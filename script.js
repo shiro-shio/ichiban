@@ -53,6 +53,11 @@ document.getElementById('getFilled').addEventListener('click', () => {
     applyImage()
 });
 
+document.getElementById('imageupdate').addEventListener('click', () => {
+    adjustBackgroundSize();
+    applyImage();
+})
+
 
 function updateBoard() {
     let col = parseInt(document.getElementById('col').value);
