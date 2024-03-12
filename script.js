@@ -49,6 +49,7 @@ document.getElementById('getFilled').addEventListener('click', () => {
     }
     updateBoard();
     adjustBackgroundSize();
+    applyImage()
 });
 
 
@@ -134,3 +135,34 @@ function adjustBackgroundSize() {
         cell.style.backgroundSize = `${size_w}px ${size_h}px`;
     });
   }
+
+  function applyImage() {
+    var fileInput = document.getElementById('imageInput');
+    if (fileInput.files && fileInput.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            var newClassName = "new-background";
+            var backgroundImageUrl = `${e.target.result}`;
+            var style = document.getElementById('new-background-style');
+            if (!style) {
+                style = document.createElement('style');
+                style.id = 'new-background-style';
+                document.head.appendChild(style);
+            } else {
+                while (style.sheet.cssRules.length) {
+                    style.sheet.deleteRule(0);
+                }
+            }
+            style.sheet.insertRule(`.${newClassName} { background-image: url('${backgroundImageUrl}'); }`, 0);
+
+            document.querySelectorAll('.cell').forEach(function(element) {
+                element.classList.remove("cell");
+                element.classList.add("cell-base");
+                element.classList.remove("new-background");
+                element.classList.add("new-background");
+            });
+        };
+        reader.readAsDataURL(fileInput.files[0]);
+    }
+}
+

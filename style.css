@@ -131,26 +131,48 @@ input[name="col2"] {
 }
 
 .cell {
-    width: 50px; /* 格子大小 */
+    width: 50px;
     height: 50px;
     background-color: #a4b9fd;
-    background-image: url('night_2.jpg'); /* 替換成你的圖片URL */
+    /*background-image: url('night_2.jpg');*/
     background-attachment: fixed;
-    background-position-x: 290px;
-    background-position-y: 106px;
+    background-position-x: 285px;
+    background-position-y: 160px;
     background-size: 54% 67%;
     word-break: break-word;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    padding: 5px; /* 添加內距以避免文字貼近邊緣 */
-    box-sizing: border-box; /* 確保寬高包含padding */
-    overflow: hidden; /* 隱藏超出部分 */
-    text-align: center; /* 文字居中 */
-    word-wrap: break-word; /* 允許在單詞內換行 */
-    font-size: 14px; /* 初始字體大小 */
-    text-shadow: 0 0 10px #fff, 0 0 10px #fff, 0 0 30px #ff00de, 0 0 40px #ff00de, 0 0 50px #ff00de, 0 0 60px #ff00de, 0 0 70px #ff00de;
+    padding: 5px;
+    box-sizing: border-box;
+    overflow: hidden;
+    text-align: center;
+    word-wrap: break-word;
+    font-size: 14px;
+    /*text-shadow: 0 0 10px #fff, 0 0 10px #fff, 0 0 5px #ffffff, 0 0 5px #ff00de, 0 0 50px #ff00de, 0 0 60px #ff00de, 0 0 70px #ff00de;*/
+}
+
+.cell-base {
+    width: 50px;
+    height: 50px;
+    background-color: #ffffff;
+    background-attachment: fixed;
+    background-position-x: 285px;
+    background-position-y: 160px;
+    background-size: 54% 67%;
+    word-break: break-word;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 5px;
+    box-sizing: border-box;
+    overflow: hidden;
+    text-align: center;
+    word-wrap: break-word;
+    font-size: 14px;
+    text-shadow: 0 0 10px #fff, 0 0 10px #fff, 0 0 5px #ffffff, 0 0 5px #ff00de, 0 0 50px #ff00de, 0 0 60px #ff00de, 0 0 70px #ff00de;
 }
 
 .cell.small-text {

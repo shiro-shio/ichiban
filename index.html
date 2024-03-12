@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>戳戳樂</title>
-    <link rel="stylesheet" href="style.css?ver=202403102358"> <!-- 引入CSS樣式 -->
+    <link rel="stylesheet" href="style.css?ver=202403102358">
 </head>
 <body >
     <div class="top-bar">
@@ -34,16 +34,18 @@
                 <input type="number" id="row" value="5" min="3" max="15">
                 <button id="getFilled">更新</button>
             </div>
-            <div id="count"></div>
+            <div id="count"><p>獎品總數:</p></div>
             <div id="table-container"></div>
         </div>
-        <div style="margin-top: 32px; margin-left: 10px;">
+        <div style="margin-top: 0px; margin-left: 10px;">
+            <div style="margin-bottom: 60px;">
+                <a>選擇臨時圖片</a>
+                <input type="file" id="imageInput" accept="image/*">
+            </div>
             <div id="game-board">
-                <!-- 生成25個格子 -->
-                <!-- 使用JavaScript動態生成格子內容 -->
             </div>
         </div>
     </div>
-    <script src="script.js?ver=202403102358"></script> <!-- 引入JavaScript -->
+    <script src="script.js?ver=202403102358"></script>
 </body>
 </html>
