@@ -1,26 +1,27 @@
 // script.js
 
-let prizesList = [{name: '', quantity: 0},]
+let prizesList = [{ name: '', quantity: 0 },]
 let _name = '';
 let quantity = 0;
 let items = [];
+let fontsz = 42;
 const board = document.getElementById('game-board');
 
 
 function generateTableWithInputs(rows) {
     var table = '<table border="1">';
-    const AZ = ['A','B','C','D','E',
-                'F','G','H','I','J',
-                'K','L','M','N','O',
-                'P','Q','R','S','T']
+    const AZ = ['A', 'B', 'C', 'D', 'E',
+        'F', 'G', 'H', 'I', 'J',
+        'K', 'L', 'M', 'N', 'O',
+        'P', 'Q', 'R', 'S', 'T']
     for (var row = 0; row < rows; row++) {
         table += '<tr>';
-        table += '<td><input name="col0" type="text"'+`value="${AZ[row]}賞"`+'></td>';
+        table += '<td><input name="col0" type="text"' + `value="${AZ[row]}賞"` + '></td>';
         table += '<td><input name="col1" type="text"></td>';
         table += '<td><input name="col2" type="number" min=0 value="0"></td>';
         table += '</tr>';
     }
-    
+
     table += '</table>';
     document.getElementById('table-container').innerHTML = table;
 }
@@ -53,17 +54,11 @@ document.getElementById('getFilled').addEventListener('click', () => {
 });
 
 
-document.addEventListener('DOMContentLoaded', () => {
-    col.addEventListener('input', updateBoard);
-    row.addEventListener('input', updateBoard);
-    updateBoard();
-});
-
 function updateBoard() {
     let col = parseInt(document.getElementById('col').value);
     let row = parseInt(document.getElementById('row').value);
-    board.innerHTML = ''; // 清空遊戲板
-    board.style.gridTemplateColumns = `repeat(${col}, 50px)`;
+    board.innerHTML = '';
+    board.style.gridTemplateColumns = `repeat(${col}, ${fontsz}px)`;
     const totalCells = col * row;
     let cells = [];
     const punchedCells = new Set();
@@ -96,6 +91,10 @@ function updateBoard() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    col.addEventListener('input', updateBoard);
+    row.addEventListener('input', updateBoard);
+    updateBoard();
+
     const inputs = document.querySelectorAll('#table-container input');
     inputs.forEach(input => {
         input.addEventListener('input', (event) => {
@@ -108,7 +107,6 @@ document.addEventListener('DOMContentLoaded', () => {
             items[rowIndex] = Array.from(rowInputs).map(rowInput => {
                 return rowInput.name === 'col2' ? parseInt(rowInput.value, 10) : rowInput.value;
             });
-            //console.log(items);
             statistical()
 
         });
@@ -131,16 +129,16 @@ function adjustBackgroundSize() {
     //const gameBoard = document.getElementById('game-board');
     size_h = board.offsetHeight
     size_w = board.offsetWidth
-    document.querySelectorAll('.cell').forEach(function(cell) {
+    document.querySelectorAll('.cell').forEach(function (cell) {
         cell.style.backgroundSize = `${size_w}px ${size_h}px`;
     });
-  }
+}
 
-  function applyImage() {
+function applyImage() {
     var fileInput = document.getElementById('imageInput');
     if (fileInput.files && fileInput.files[0]) {
         var reader = new FileReader();
-        reader.onload = function(e) {
+        reader.onload = function (e) {
             var newClassName = "new-background";
             var backgroundImageUrl = `${e.target.result}`;
             var style = document.getElementById('new-background-style');
@@ -155,7 +153,7 @@ function adjustBackgroundSize() {
             }
             style.sheet.insertRule(`.${newClassName} { background-image: url('${backgroundImageUrl}'); }`, 0);
 
-            document.querySelectorAll('.cell').forEach(function(element) {
+            document.querySelectorAll('.cell').forEach(function (element) {
                 element.classList.remove("cell");
                 element.classList.add("cell-base");
                 element.classList.remove("new-background");
@@ -166,3 +164,32 @@ function adjustBackgroundSize() {
     }
 }
 
+document.getElementById('color1').addEventListener('input', function() {
+    const color = this.value;
+    document.getElementById('game-board').style.borderColor = color;
+    document.getElementById('game-board').style.backgroundColor = color;
+});
+
+document.getElementById('slider').addEventListener('input', function() {
+    const slider = this.value;
+    document.getElementById('game-board').style.gap = `${slider}px`;
+})
+
+document.getElementById('slider3').addEventListener('input', function() {
+    const slider = this.value;
+    let col = parseInt(document.getElementById('col').value);
+    document.getElementById('game-board').style.fontSize = `${slider}px`;
+    let wh=(slider-10)*3+20
+    document.getElementById('game-board').style.gridTemplateColumns = `repeat(${col}, ${wh+10}px)`;
+    fontsz=wh+10
+})
+
+document.getElementById('slider1').addEventListener('input', function() {
+    const slider = this.value;
+    document.getElementById('game-board').style.maxWidth = `${slider}px`;
+})
+
+document.getElementById('slider2').addEventListener('input', function() {
+    const slider = this.value;
+    document.getElementById('game-board').style.maxHeight = `${slider}px`;
+})

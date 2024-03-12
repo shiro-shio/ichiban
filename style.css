@@ -85,13 +85,18 @@ body {
 
 
 #game-board {
+    clip-path: border-box;
+    overflow: auto;
     display: grid;
-    grid-template-columns: repeat(10, 50px); /* 5列，每列100px */
+    grid-template-columns: repeat(5, 42px); /* 5列，每列100px */
+    font-size: 14px;
     gap: 5px; /* 格子間距 */
     width: max-content; /* 根據格子大小和間距計算 */
+    max-width: 977px;
     height: max-content; /* 根據格子大小和間距計算 */
+    max-height: 550px;
     margin-top : 0px;
-    margin-left : 1%;
+    margin-left : 10px;
     background-size: cover; /* 使背景圖片覆蓋整個容器 */
     position: relative; /* 為了之後可能的定位使用 */
     border: 5px;
@@ -131,13 +136,13 @@ input[name="col2"] {
 }
 
 .cell {
-    width: 50px;
-    height: 50px;
+    width: calc(3em); 
+    height: calc(3em);
     background-color: #a4b9fd;
     /*background-image: url('night_2.jpg');*/
     background-attachment: fixed;
-    background-position-x: 285px;
-    background-position-y: 160px;
+    background-position-x: 287px;
+    background-position-y: 163px;
     background-size: 54% 67%;
     word-break: break-word;
     display: flex;
@@ -149,17 +154,17 @@ input[name="col2"] {
     overflow: hidden;
     text-align: center;
     word-wrap: break-word;
-    font-size: 14px;
+    /*font-size: 14px;*/
     /*text-shadow: 0 0 10px #fff, 0 0 10px #fff, 0 0 5px #ffffff, 0 0 5px #ff00de, 0 0 50px #ff00de, 0 0 60px #ff00de, 0 0 70px #ff00de;*/
 }
 
 .cell-base {
-    width: 50px;
-    height: 50px;
+    width: calc(3em);
+    height: calc(3em);
     background-color: #ffffff;
     background-attachment: fixed;
-    background-position-x: 285px;
-    background-position-y: 160px;
+    background-position-x: 287px;
+    background-position-y: 163px;
     background-size: 54% 67%;
     word-break: break-word;
     display: flex;
@@ -171,10 +176,28 @@ input[name="col2"] {
     overflow: hidden;
     text-align: center;
     word-wrap: break-word;
-    font-size: 14px;
-    text-shadow: 0 0 10px #fff, 0 0 10px #fff, 0 0 5px #ffffff, 0 0 5px #ff00de, 0 0 50px #ff00de, 0 0 60px #ff00de, 0 0 70px #ff00de;
+    /*font-size: 14px;*/
+    text-shadow: 0 0 20px #fff, 
+             0 0 10px #fff, 
+             0 0 5px #ffffff, 
+             0 0 5px #ff00de, 
+             0 0 50px #ff00de, 
+             0 0 10px #ffffff, 
+             0 0 70px #ff00de;
 }
 
 .cell.small-text {
     font-size: 12px; /* 較小的字體大小，適用於長文字 */
+}
+
+input[type="color"] {
+    background-color:#ffffff00;
+    width: 25px;
+    height: 25px;
+    border: 0px;
+    padding: 0px;
+}
+
+input[type="range"] {
+    width: 100px;
 }
