@@ -1,6 +1,5 @@
-// script.js
 
-let prizesList = [{ name: '', quantity: 0 },]
+let prizesList = [{ name: '', quantity: 0 , itemname: ''},]
 let _name = '';
 let quantity = 0;
 let items = [];
@@ -35,13 +34,16 @@ document.getElementById('getFilled').addEventListener('click', () => {
     filledInputs.forEach(input => {
         if (input.name === 'col0' && input.value.trim() !== '') {
             _name = input.value.trim();
+        } else if (input.name === 'col1' && input.value.trim() !== '') {
+            _itemname = parseInt(input.value.trim(), 10);
         } else if (input.name === 'col2' && input.value.trim() !== '') {
             quantity = parseInt(input.value.trim(), 10);
         }
         if (_name && quantity > 0) {
-            prizesList.push({ name: _name, quantity: quantity });
+            prizesList.push({ name: _name, quantity: quantity, itemname: _itemname });
             _name = '';
             quantity = 0;
+            _item = '';
         }
     });
 
@@ -59,10 +61,35 @@ document.getElementById('imageupdate').addEventListener('click', () => {
 })
 
 
+function getItemName(prizeName) {
+    for (let prize of prizesList) {
+      if (prize.name === prizeName) {
+        return prize.itemname;
+      }
+    }
+    return '銘謝惠顧';
+  }
+
 function updateBoard() {
     let col = parseInt(document.getElementById('col').value);
     let row = parseInt(document.getElementById('row').value);
+    const checkmsg = document.createElement('div');
+    const msgbox = document.createElement('div');
+    const msgtext = document.createElement('span');
+    const msgbt = document.createElement('button');
+    checkmsg.id='check-msg';
+    checkmsg.style.display='none';
+    msgbox.id='msg-box';
+    msgbox.style.display='none';
+    msgtext.id='msg-text';
+    msgbt.id='msg-bt';
+    msgbt.textContent="OK"
+    msgbox.appendChild(msgtext)
+    msgbox.appendChild(msgbt)
+    checkmsg.appendChild(msgbox)
+
     board.innerHTML = '';
+    board.appendChild(checkmsg)
     board.style.gridTemplateColumns = `repeat(${col}, ${fontsz}px)`;
     const totalCells = col * row;
     let cells = [];
@@ -87,6 +114,7 @@ function updateBoard() {
         cell.onclick = () => {
             if (!punchedCells.has(i)) {
                 cell.textContent = cells[i];
+                msg(getItemName(cells[i]));
                 cell.classList.add('punched');
                 punchedCells.add(i);
             }
@@ -169,6 +197,21 @@ function applyImage() {
     }
 }
 
+function msg(m=""){
+    const checkmsg = document.getElementById('check-msg');
+    const msgBox = document.getElementById('msg-box');
+    const msgText = document.getElementById('msg-text');
+    const msgBt = document.getElementById('msg-bt');
+    checkmsg.style.display='flex';
+    msgBox.style.display='flex';
+    msgText.textContent = `${m}`;
+    msgBt.onclick = function() {
+        msgBox.style.display='none'
+        checkmsg.style.display='none'
+    }
+}
+
+
 document.getElementById('color1').addEventListener('input', function() {
     const color = this.value;
     document.getElementById('game-board').style.borderColor = color;
@@ -198,3 +241,5 @@ document.getElementById('slider2').addEventListener('input', function() {
     const slider = this.value;
     document.getElementById('game-board').style.maxHeight = `${slider}px`;
 })
+
+
