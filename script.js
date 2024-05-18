@@ -35,7 +35,7 @@ document.getElementById('getFilled').addEventListener('click', () => {
         if (input.name === 'col0' && input.value.trim() !== '') {
             _name = input.value.trim();
         } else if (input.name === 'col1' && input.value.trim() !== '') {
-            _itemname = parseInt(input.value.trim(), 10);
+            _itemname = input.value.trim();
         } else if (input.name === 'col2' && input.value.trim() !== '') {
             quantity = parseInt(input.value.trim(), 10);
         }
