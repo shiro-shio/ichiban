@@ -7,7 +7,7 @@ body {
 .top-bar {
     display: flex;
     align-items: center;
-    background-color: #f8f9fa; /* 淺灰背景色 */
+    background-color: #f8f9fa;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     height: 50px; /* 設置一個固定的高度 */
     margin-bottom: 25px;
@@ -17,7 +17,7 @@ body {
     display: inline-block;
     position: relative;
     margin: 0 15px;
-    text-decoration: none; /* 移除底線 */
+    text-decoration: none;
 }
 
 .social-link img {
@@ -27,7 +27,7 @@ body {
 }
 
 .social-link:hover img {
-    transform: scale(1.1); /* 懸停時放大LOGO */
+    transform: scale(1.1);
 }
 
 .social-link span {
@@ -38,8 +38,8 @@ body {
     bottom: -20px;
     transform: translateX(-50%);
     transition: opacity 0.3s ease, visibility 0s linear 0.3s;
-    color: #007bff; /* 文字顏色 */
-    white-space: nowrap; /* 避免文字換行 */
+    color: #007bff;
+    white-space: nowrap;
 }
 
 .social-link:hover span {
@@ -55,32 +55,32 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 15px; /* 兩側的padding */
-    height: 100%; /* 高度設為100%以填滿.top-bar的高度 */
+    padding: 0 15px;
+    height: 100%;
 }
 
 .extra-links {
     margin-right: 20px;
-    margin-left: auto; /* 將額外連結推向右側 */
+    margin-left: auto;
     display: flex;
     align-items: center;
 }
 
 .extra-links a {
     text-decoration: none;
-    color: #007bff; /* 設定連結顏色 */
-    margin-left: 15px; /* 設定連結間距 */
+    color: #007bff;
+    margin-left: 15px;
     transition: color 0.3s ease-in-out;
 }
 
 .extra-links a:hover {
-    color: #0056b3; /* 鼠標懸停時的顏色 */
+    color: #0056b3;
 }
 
 .social-link, .extra-links {
     display: flex;
     align-items: center;
-    height: 100%; /* 確保填滿.top-bar的高度 */
+    height: 100%;
 }
 
 
@@ -88,17 +88,17 @@ body {
     clip-path: border-box;
     overflow: auto;
     display: grid;
-    grid-template-columns: repeat(5, 42px); /* 5列，每列100px */
+    grid-template-columns: repeat(5, 42px);
     font-size: 14px;
-    gap: 5px; /* 格子間距 */
-    width: max-content; /* 根據格子大小和間距計算 */
+    gap: 5px; 
+    width: max-content; 
     max-width: 977px;
-    height: max-content; /* 根據格子大小和間距計算 */
+    height: max-content;
     max-height: 550px;
     margin-top : 0px;
     margin-left : 10px;
-    background-size: cover; /* 使背景圖片覆蓋整個容器 */
-    position: relative; /* 為了之後可能的定位使用 */
+    background-size: cover; 
+    position: relative;
     border: 5px;
     border-style: solid;
     border-color: #95d0f5;
@@ -131,8 +131,8 @@ input[name="col2"] {
     width: 30px;
 }
 .punched {
-    background-color: #ffcccc; /* 被戳破後的背景顏色 */
-    pointer-events: none; /* 禁止再次點擊 */
+    background-color: #ffcccc;
+    pointer-events: none;
 }
 
 .cell {
@@ -187,7 +187,7 @@ input[name="col2"] {
 }
 
 .cell.small-text {
-    font-size: 12px; /* 較小的字體大小，適用於長文字 */
+    font-size: 12px;
 }
 
 input[type="color"] {
@@ -221,6 +221,10 @@ input[type="range"] {
     align-items: center;
     justify-content: center;
     border-radius: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    background-color: #e8f4ffbf;
 }
 #msg-text{
     margin-bottom: 15px;
