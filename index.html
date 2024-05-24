@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>戳戳樂</title>
-    <link rel="stylesheet" href="style.css?ver=202403102358"> <!-- 引入CSS樣式 -->
+    <link rel="stylesheet" href="style.css?ver=202405242028">
 </head>
 <body >
     <div class="top-bar">
@@ -32,18 +32,41 @@
                 <input type="number" id="col" value="5" min="3" max="15">
                 <label for="row">排:</label>
                 <input type="number" id="row" value="5" min="3" max="15">
-                <button id="getFilled">更新</button>
+                <button id="getFilled">開始</button>
             </div>
-            <div id="count"></div>
+            <div id="count"><p>獎品總數:</p></div>
             <div id="table-container"></div>
         </div>
-        <div style="margin-top: 32px; margin-left: 10px;">
+        <div style="margin-left: 10px;">
+            <div style="margin-bottom: 10px;margin-left: 10px;">
+                <span>選擇臨時圖片</span>
+                <button id="imageupdate">圖片更新</button>
+                <input type="file" id="imageInput" accept="image/*">
+            </div>
+            <div style="margin-left: 10px;">
+                <span>比例:</span>
+                <input type="range" id="slider3" name="slider" min="10" max="50" value="16">
+                <span>間距:</span>
+                <input type="range" id="slider" name="slider" min="0" max="20" value="5">
+                <span>底色:</span>
+                <input type="color" id="color1" value="#95d0f5">
+            </div>
+            <div style="margin-left: 10px;">
+                <span>寬度:</span>
+                <input type="range" id="slider1" name="slider" min="300" max="1500" value="550">
+                <span>高度:</span>
+                <input type="range" id="slider2" name="slider" min="500" max="1500" value="550">
+            </div>
             <div id="game-board">
-                <!-- 生成25個格子 -->
-                <!-- 使用JavaScript動態生成格子內容 -->
+                <div id="check-msg">
+                    <div id="msg-box">
+                        <span id="msg-text">TEST</span>
+                        <button id="msg-bt">OK</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <script src="script.js?ver=202403102358"></script> <!-- 引入JavaScript -->
+    <script src="script.js?ver=202405181718"></script>
 </body>
 </html>
