@@ -30,7 +30,8 @@ generateTableWithInputs(20);
 document.getElementById('getFilled').addEventListener('click', () => {
     const inputs = document.querySelectorAll('#table-container input');
     const filledInputs = Array.from(inputs).filter(input => input.value.trim() !== '');
-    prizesList = []
+    let prizesList = []
+    let _name = '';let _itemname = '';let quantity = 0;
     filledInputs.forEach(input => {
         if (input.name === 'col0' && input.value.trim() !== '') {
             _name = input.value.trim();
