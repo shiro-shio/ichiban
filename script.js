@@ -1,6 +1,7 @@
 
 let prizesList = [{ name: '', quantity: 0 , itemname: ''},]
 let _name = '';
+let _itemname = '';
 let quantity = 0;
 let items = [];
 let fontsz = 42;
